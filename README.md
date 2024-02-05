@@ -11,7 +11,8 @@
 - ViewCode;
 - GitFlow;
 - MVC ou MVVM;
-- [Conventional Commits] (https://github.com/iuricode/padroes-de-commits)
+- [Conventional Commits] (https://github.com/iuricode/padroes-de-commits);
+- Finalize com PR apontando para main;
 
 ## Preview:
 ![gif](https://media.giphy.com/media/I66B4LTlbVWfxcLnYC/giphy.gif)
