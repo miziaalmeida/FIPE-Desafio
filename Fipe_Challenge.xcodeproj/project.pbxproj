@@ -9,11 +9,14 @@
 /* Begin PBXBuildFile section */
 		6F68ED402B7154C700B69330 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F68ED3F2B7154C700B69330 /* AppDelegate.swift */; };
 		6F68ED422B7154C700B69330 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F68ED412B7154C700B69330 /* SceneDelegate.swift */; };
-		6F68ED442B7154C700B69330 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F68ED432B7154C700B69330 /* ViewController.swift */; };
 		6F68ED472B7154C700B69330 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6F68ED452B7154C700B69330 /* Main.storyboard */; };
 		6F68ED492B7154C900B69330 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6F68ED482B7154C900B69330 /* Assets.xcassets */; };
 		6F68ED4C2B7154C900B69330 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6F68ED4A2B7154C900B69330 /* LaunchScreen.storyboard */; };
-		6FA929C32B717BC8003082ED /* BrandView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FA929C22B717BC8003082ED /* BrandView.swift */; };
+		6F6A221C2B726A6A00FB1B6A /* ModelsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F6A221B2B726A6A00FB1B6A /* ModelsViewController.swift */; };
+		6F6A221E2B726E9100FB1B6A /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F6A221D2B726E9100FB1B6A /* APIManager.swift */; };
+		6F6A22242B7270F400FB1B6A /* Car.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F6A22232B7270F400FB1B6A /* Car.swift */; };
+		6F6A22262B72724A00FB1B6A /* CarDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F6A22252B72724A00FB1B6A /* CarDetail.swift */; };
+		6F6A22282B72744E00FB1B6A /* ServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F6A22272B72744E00FB1B6A /* ServiceProtocol.swift */; };
 		6FA929C52B717EF9003082ED /* BrandsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FA929C42B717EF9003082ED /* BrandsViewController.swift */; };
 		6FA929C82B717F95003082ED /* BrandsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FA929C72B717F95003082ED /* BrandsViewModel.swift */; };
 /* End PBXBuildFile section */
@@ -22,12 +25,15 @@
 		6F68ED3C2B7154C700B69330 /* Fipe_Challenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fipe_Challenge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6F68ED3F2B7154C700B69330 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6F68ED412B7154C700B69330 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		6F68ED432B7154C700B69330 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		6F68ED462B7154C700B69330 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		6F68ED482B7154C900B69330 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6F68ED4B2B7154C900B69330 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6F68ED4D2B7154C900B69330 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		6FA929C22B717BC8003082ED /* BrandView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrandView.swift; sourceTree = "<group>"; };
+		6F6A221B2B726A6A00FB1B6A /* ModelsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelsViewController.swift; sourceTree = "<group>"; };
+		6F6A221D2B726E9100FB1B6A /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
+		6F6A22232B7270F400FB1B6A /* Car.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Car.swift; sourceTree = "<group>"; };
+		6F6A22252B72724A00FB1B6A /* CarDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarDetail.swift; sourceTree = "<group>"; };
+		6F6A22272B72744E00FB1B6A /* ServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceProtocol.swift; sourceTree = "<group>"; };
 		6FA929C42B717EF9003082ED /* BrandsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrandsViewController.swift; sourceTree = "<group>"; };
 		6FA929C72B717F95003082ED /* BrandsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrandsViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -64,8 +70,6 @@
 			children = (
 				6F68ED3F2B7154C700B69330 /* AppDelegate.swift */,
 				6F68ED412B7154C700B69330 /* SceneDelegate.swift */,
-				6F68ED432B7154C700B69330 /* ViewController.swift */,
-				6F68ED452B7154C700B69330 /* Main.storyboard */,
 				6F68ED482B7154C900B69330 /* Assets.xcassets */,
 				6FA929BD2B7179AD003082ED /* Features */,
 				6FA929C92B718BEC003082ED /* Common */,
@@ -75,10 +79,61 @@
 			path = Fipe_Challenge;
 			sourceTree = "<group>";
 		};
+		6F6A22182B7269E300FB1B6A /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				6F6A22192B726A3800FB1B6A /* View */,
+				6F6A221A2B726A4000FB1B6A /* ViewModel */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		6F6A22192B726A3800FB1B6A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				6F6A221B2B726A6A00FB1B6A /* ModelsViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		6F6A221A2B726A4000FB1B6A /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		6F6A22212B726FB400FB1B6A /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				6F6A221D2B726E9100FB1B6A /* APIManager.swift */,
+			);
+			name = Service;
+			path = ../Service;
+			sourceTree = "<group>";
+		};
+		6F6A22222B7270E600FB1B6A /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				6F6A22232B7270F400FB1B6A /* Car.swift */,
+				6F6A22252B72724A00FB1B6A /* CarDetail.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		6F6A22292B72745F00FB1B6A /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				6F6A22272B72744E00FB1B6A /* ServiceProtocol.swift */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
 		6FA929BD2B7179AD003082ED /* Features */ = {
 			isa = PBXGroup;
 			children = (
 				6FA929BE2B717A9C003082ED /* Brands */,
+				6F6A22182B7269E300FB1B6A /* Models */,
 			);
 			path = Features;
 			sourceTree = "<group>";
@@ -95,7 +150,7 @@
 		6FA929BF2B717AAB003082ED /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				6FA929C22B717BC8003082ED /* BrandView.swift */,
+				6F68ED452B7154C700B69330 /* Main.storyboard */,
 				6FA929C42B717EF9003082ED /* BrandsViewController.swift */,
 			);
 			path = Views;
@@ -112,6 +167,9 @@
 		6FA929C92B718BEC003082ED /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				6F6A22292B72745F00FB1B6A /* Protocol */,
+				6F6A22222B7270E600FB1B6A /* Models */,
+				6F6A22212B726FB400FB1B6A /* Service */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -187,11 +245,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6F6A221E2B726E9100FB1B6A /* APIManager.swift in Sources */,
 				6FA929C82B717F95003082ED /* BrandsViewModel.swift in Sources */,
 				6FA929C52B717EF9003082ED /* BrandsViewController.swift in Sources */,
-				6F68ED442B7154C700B69330 /* ViewController.swift in Sources */,
+				6F6A22262B72724A00FB1B6A /* CarDetail.swift in Sources */,
+				6F6A221C2B726A6A00FB1B6A /* ModelsViewController.swift in Sources */,
 				6F68ED402B7154C700B69330 /* AppDelegate.swift in Sources */,
-				6FA929C32B717BC8003082ED /* BrandView.swift in Sources */,
+				6F6A22282B72744E00FB1B6A /* ServiceProtocol.swift in Sources */,
+				6F6A22242B7270F400FB1B6A /* Car.swift in Sources */,
 				6F68ED422B7154C700B69330 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

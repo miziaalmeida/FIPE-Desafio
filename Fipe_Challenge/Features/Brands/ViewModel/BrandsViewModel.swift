@@ -8,4 +8,5 @@
 import Foundation
 
 class BrandsViewModel {
+    var brand: String
 }
