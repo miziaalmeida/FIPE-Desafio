@@ -7,22 +7,23 @@
 
 import UIKit
 
-class BrandsViewController: UIViewController {
+class BrandsViewController: UIViewController, UITableViewDataSource {
     let viewModel = BrandsViewModel()
+    var cars = [Car]()
     var tableView: UITableView!
     var brandLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewModel.getCarBrand()
         setupView()
         setupConstraint()
     }
-    
-    
+
     func setupView() {
         tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.dataSource = self
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         view.addSubview(tableView)
         
         brandLabel = UILabel()
@@ -38,8 +39,31 @@ class BrandsViewController: UIViewController {
             
             brandLabel.centerXAnchor.constraint(equalTo: tableView.centerXAnchor),
             brandLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-
         ])
+    }
+    
+    func loadCarsData() {
+        BrandsViewModel.getCarBrand { [weak self] (cars) in
+            if let cars = cars {
+                self?.cars = cars
+                DispatchQueue.main.async {
+                    self?.tableView.reloadData()
+                }
+            } else {
+                print("deu ruim po")
+            }
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return cars.count
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        let cars = cars[indexPath.row]
+        cell.textLabel?.text = "\(cars.nome)"
+        return cell
     }
 }
 

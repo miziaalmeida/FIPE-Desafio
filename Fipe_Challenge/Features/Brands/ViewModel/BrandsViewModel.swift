@@ -9,7 +9,9 @@ import Foundation
 
 class BrandsViewModel {
     
-    func getCarBrand() {
+//    var arrayBrands = [Car]()
+    
+     static func getCarBrand(completion: @escaping ([Car]?) -> Void) {
         let url = URL(string: "https://parallelum.com.br/fipe/api/v1/carros/marcas")!
 
         var request = URLRequest(url: url)
@@ -32,4 +34,16 @@ class BrandsViewModel {
         }
         task.resume()
     }
+//
+//    func getArrayBrands() -> [Car]{
+//        return arrayBrands
+//    }
+//
+//    func getNameBrands(i: Int) -> String {
+//        return arrayBrands[i].nome
+//    }
+//
+//    func getIdBrands(i: Int) -> String{
+//        return arrayBrands[i].codigo
+//    }
 }
