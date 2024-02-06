@@ -1,5 +1,5 @@
 //
-//  ModelsViewController.swift
+//  YearViewController.swift
 //  Fipe_Challenge
 //
 //  Created by Jeiel Lima on 06/02/24.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ModelsViewController: UIViewController {
+class YearViewController: UIViewController {
     var tableView: UITableView!
     var brandLabel: UILabel!
     

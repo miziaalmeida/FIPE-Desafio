@@ -8,14 +8,18 @@
 import UIKit
 
 class BrandsViewController: UIViewController {
+    let viewModel = BrandsViewModel()
     var tableView: UITableView!
     var brandLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+//        viewModel.delegate = self
+//        viewModel.getCarBrands()
         setupView()
         setupConstraint()
     }
+    
     
     func setupView() {
         tableView = UITableView()
@@ -24,13 +28,18 @@ class BrandsViewController: UIViewController {
         
         brandLabel = UILabel()
         brandLabel.translatesAutoresizingMaskIntoConstraints = false
-        brandLabel.text = "car"
         view.addSubview(brandLabel)
     }
     
     func setupConstraint() {
         NSLayoutConstraint.activate([
-        
+            tableView.topAnchor.constraint(equalTo: view.topAnchor, constant: 20),
+            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 15),
+            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 15),
+            
+            brandLabel.centerXAnchor.constraint(equalTo: tableView.centerXAnchor),
+            brandLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+
         ])
     }
 }

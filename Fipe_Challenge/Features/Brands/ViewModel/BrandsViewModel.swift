@@ -8,5 +8,27 @@
 import Foundation
 
 class BrandsViewModel {
-    var brand: String
+    func getCar() {
+        let url = URL(string: "https://parallelum.com.br/fipe/api/v1/carros/marcas")!
+
+        var request = URLRequest(url: url)
+
+        request.setValue(
+            "application/json",
+            forHTTPHeaderField: "Content-Type"
+        )
+        
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            if let data = data {
+                if let cars = try? JSONDecoder().decode([Car].self, from: data) {
+                    print(cars)
+                } else {
+                    print("Invalid Response")
+                }
+            } else if let error = error {
+                print("HTTP Request Failed \(error)")
+            }
+        }
+        task.resume()
+    }
 }

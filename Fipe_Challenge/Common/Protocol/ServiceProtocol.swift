@@ -8,6 +8,6 @@
 import Foundation
 
 protocol CarDetailDelegate: AnyObject {
-    func didObtainCarDetail(_ detalhes: [CarDetail])
-    func didFailCarDetail(_ erro: Error)
+    func didUpdateBrands()
+    func didFailToUpdateBrands(withError error: Error)
 }
