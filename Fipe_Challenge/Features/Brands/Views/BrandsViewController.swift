@@ -11,7 +11,6 @@ class BrandsViewController: UIViewController, UITableViewDataSource {
     let viewModel = BrandsViewModel()
     var cars = [Car]()
     var tableView: UITableView!
-    var brandLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,9 +35,6 @@ class BrandsViewController: UIViewController, UITableViewDataSource {
             tableView.topAnchor.constraint(equalTo: view.topAnchor, constant: 20),
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 15),
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 15),
-            
-            brandLabel.centerXAnchor.constraint(equalTo: tableView.centerXAnchor),
-            brandLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
         ])
     }
     
