@@ -14,8 +14,7 @@ class BrandsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        viewModel.delegate = self
-//        viewModel.getCarBrands()
+        viewModel.getCarBrand()
         setupView()
         setupConstraint()
     }

@@ -7,7 +7,7 @@
 
 import Foundation
 
-class Car: Codable {
-    var name: String?
-    var id: String?
+struct Car: Decodable {
+    let nome: String
+    let codigo: String
 }
