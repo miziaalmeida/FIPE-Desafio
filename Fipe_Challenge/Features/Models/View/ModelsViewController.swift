@@ -35,7 +35,6 @@ class ModelsViewController: UIViewController {
             tableViewModel.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
             tableViewModel.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
             tableViewModel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-
         ])
     }
     
@@ -44,5 +43,4 @@ class ModelsViewController: UIViewController {
         self.tableViewModel.reloadData()
         }
     }
-
 }
