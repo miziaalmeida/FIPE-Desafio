@@ -8,7 +8,7 @@
 import Foundation
 
 class APIManager {
-    func getCarBrand(completion: @escaping ([Car]?) -> Void) {
+    func getCar(completion: @escaping ([Car]?) -> Void) {
        let url = URL(string: "https://parallelum.com.br/fipe/api/v1/carros/marcas")!
 
        var request = URLRequest(url: url)

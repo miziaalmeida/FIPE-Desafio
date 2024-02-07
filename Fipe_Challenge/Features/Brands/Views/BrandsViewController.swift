@@ -38,7 +38,7 @@ class BrandsViewController: UIViewController, UITableViewDataSource {
     }
     
     func loadCarsData() {
-        viewModel.getCarBrand { [weak self] (cars) in
+        viewModel.api.getCar { [weak self] (cars) in
             if let cars = cars {
                 self?.cars = cars
                 DispatchQueue.main.async {

@@ -8,5 +8,5 @@
 import Foundation
 
 class BrandsViewModel {
-    var api = API
+    var api = APIManager()
 }
