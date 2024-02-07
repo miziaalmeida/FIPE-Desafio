@@ -24,7 +24,7 @@ class BrandsViewModel {
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             if let data = data {
                 if let cars = try? JSONDecoder().decode([Car].self, from: data) {
-                    print(cars)
+                    completion(cars)
                 } else {
                     print("Invalid Response")
                 }

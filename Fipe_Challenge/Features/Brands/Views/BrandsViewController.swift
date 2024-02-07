@@ -8,6 +8,7 @@
 import UIKit
 
 class BrandsViewController: UIViewController, UITableViewDataSource {
+    
     let viewModel = BrandsViewModel()
     var cars = [Car]()
     var tableView: UITableView!
@@ -16,6 +17,7 @@ class BrandsViewController: UIViewController, UITableViewDataSource {
         super.viewDidLoad()
         setupView()
         setupConstraint()
+        loadCarsData()
     }
 
     func setupView() {
@@ -64,41 +66,41 @@ class BrandsViewController: UIViewController, UITableViewDataSource {
 
 // MARK: - Preview
 
-#if canImport(SwiftUI) && DEBUG
-import SwiftUI
-struct UIViewControllerPreview<BrandsViewController: UIViewController>: UIViewControllerRepresentable {
-    let viewController: BrandsViewController
-
-    init(_ builder: @escaping () -> BrandsViewController) {
-        viewController = builder()
-    }
-
-    func makeUIViewController(context: Context) -> BrandsViewController {
-        viewController
-    }
-
-    func updateUIViewController(_ uiViewController: BrandsViewController, context: UIViewControllerRepresentableContext<UIViewControllerPreview<BrandsViewController>>) {
-        return
-    }
-}
-#endif
-
-#if canImport(SwiftUI) && DEBUG
-import SwiftUI
-
-let deviceNames: [String] = [
-    "iPhone 11 Pro Max"
-]
-
-@available(iOS 13.0, *)
-struct ViewController_Preview: PreviewProvider {
-  static var previews: some View {
-    ForEach(deviceNames, id: \.self) { deviceName in
-      UIViewControllerPreview {
-        BrandsViewController()
-      }.previewDevice(PreviewDevice(rawValue: deviceName))
-        .previewDisplayName(deviceName)
-    }
-  }
-}
-#endif
+//#if canImport(SwiftUI) && DEBUG
+//import SwiftUI
+//struct UIViewControllerPreview<BrandsViewController: UIViewController>: UIViewControllerRepresentable {
+//    let viewController: BrandsViewController
+//
+//    init(_ builder: @escaping () -> BrandsViewController) {
+//        viewController = builder()
+//    }
+//
+//    func makeUIViewController(context: Context) -> BrandsViewController {
+//        viewController
+//    }
+//
+//    func updateUIViewController(_ uiViewController: BrandsViewController, context: UIViewControllerRepresentableContext<UIViewControllerPreview<BrandsViewController>>) {
+//        return
+//    }
+//}
+//#endif
+//
+//#if canImport(SwiftUI) && DEBUG
+//import SwiftUI
+//
+//let deviceNames: [String] = [
+//    "iPhone 11 Pro Max"
+//]
+//
+//@available(iOS 13.0, *)
+//struct ViewController_Preview: PreviewProvider {
+//  static var previews: some View {
+//    ForEach(deviceNames, id: \.self) { deviceName in
+//      UIViewControllerPreview {
+//        BrandsViewController()
+//      }.previewDevice(PreviewDevice(rawValue: deviceName))
+//        .previewDisplayName(deviceName)
+//    }
+//  }
+//}
+//#endif
