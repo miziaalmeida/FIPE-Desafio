@@ -8,6 +8,7 @@
 import UIKit
 
 class ModelsViewController: UIViewController {
+    
     var viewModel = ModelsViewModel()
     var tableViewModel: UITableView!
     var brandId: String?
@@ -17,6 +18,7 @@ class ModelsViewController: UIViewController {
         setupView()
         setupConstraint()
         viewModel.id = brandId
+        loadModelData()
 
     }
     
@@ -25,29 +27,22 @@ class ModelsViewController: UIViewController {
         tableViewModel.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(tableViewModel)
 
-//        brandLabel = UILabel()
-//        brandLabel.translatesAutoresizingMaskIntoConstraints = false
-//        brandLabel.text = "car"
-//        view.addSubview(brandLabel)
     }
     
     func setupConstraint() {
         NSLayoutConstraint.activate([
-        
+            tableViewModel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            tableViewModel.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            tableViewModel.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            tableViewModel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+
         ])
     }
     
-//    func loadCarsData() {
-//        viewModel.getCarModel { [weak self] (cars) in
-//            if let cars = cars {
-//                self?.cars = cars
-//                DispatchQueue.main.async {
-//                    self?.tableView.reloadData()
-//                }
-//            } else {
-//                print("deu ruim po")
-//            }
-//        }
-//    }
+    func loadModelData() {
+        DispatchQueue.main.async {
+        self.tableViewModel.reloadData()
+        }
+    }
 
 }

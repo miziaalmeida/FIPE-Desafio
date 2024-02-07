@@ -8,7 +8,6 @@
 import Foundation
 
 class ModelsViewModel {
-    var arrayModels = [Car]()
     var id: String?
     
     func getCarModel(completion: @escaping ([Car]?) -> Void) {
