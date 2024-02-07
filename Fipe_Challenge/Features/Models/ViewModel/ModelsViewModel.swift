@@ -11,10 +11,10 @@ class ModelsViewModel {
     var arrayModels = [Car]()
     var id: String?
     
-     func getCarModel(completion: @escaping ([Car]?) -> Void) {
+    func getCarModel(completion: @escaping ([Car]?) -> Void) {
         
         if let id = id {
-            let url = URL(string: "https://parallelum.com.br/fipe/api/v1/carros/marcas\(id)/modelos")!
+            let url = URL(string: "https://parallelum.com.br/fipe/api/v1/carros/marcas/\(id)/modelos")!
 
             var request = URLRequest(url: url)
 

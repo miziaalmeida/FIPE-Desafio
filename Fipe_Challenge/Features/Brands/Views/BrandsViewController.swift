@@ -26,7 +26,6 @@ class BrandsViewController: UIViewController, UITableViewDataSource {
         tableView.dataSource = self
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         view.addSubview(tableView)
-        
     }
     
     func setupConstraint() {
@@ -66,49 +65,8 @@ class BrandsViewController: UIViewController, UITableViewDataSource {
 extension BrandsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let nextViewController = ModelsViewController()
-        nextViewController.brandId = viewModel.getIdBrands(i: indexPath.row)
+        let selectBrand = cars[indexPath.row]
+        nextViewController.brandId = selectBrand.codigo
         navigationController?.pushViewController(nextViewController, animated: true)
     }
 }
-
-
-// MARK: - Preview
-
-//#if canImport(SwiftUI) && DEBUG
-//import SwiftUI
-//struct UIViewControllerPreview<BrandsViewController: UIViewController>: UIViewControllerRepresentable {
-//    let viewController: BrandsViewController
-//
-//    init(_ builder: @escaping () -> BrandsViewController) {
-//        viewController = builder()
-//    }
-//
-//    func makeUIViewController(context: Context) -> BrandsViewController {
-//        viewController
-//    }
-//
-//    func updateUIViewController(_ uiViewController: BrandsViewController, context: UIViewControllerRepresentableContext<UIViewControllerPreview<BrandsViewController>>) {
-//        return
-//    }
-//}
-//#endif
-//
-//#if canImport(SwiftUI) && DEBUG
-//import SwiftUI
-//
-//let deviceNames: [String] = [
-//    "iPhone 11 Pro Max"
-//]
-//
-//@available(iOS 13.0, *)
-//struct ViewController_Preview: PreviewProvider {
-//  static var previews: some View {
-//    ForEach(deviceNames, id: \.self) { deviceName in
-//      UIViewControllerPreview {
-//        BrandsViewController()
-//      }.previewDevice(PreviewDevice(rawValue: deviceName))
-//        .previewDisplayName(deviceName)
-//    }
-//  }
-//}
-//#endif
