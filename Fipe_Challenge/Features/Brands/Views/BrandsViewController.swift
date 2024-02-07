@@ -31,15 +31,15 @@ class BrandsViewController: UIViewController, UITableViewDataSource {
     
     func setupConstraint() {
         NSLayoutConstraint.activate([
-            tableView.topAnchor.constraint(equalTo: view.topAnchor),
+            tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
         ])
     }
     
     func loadCarsData() {
-        BrandsViewModel.getCarBrand { [weak self] (cars) in
+        viewModel.getCarBrand { [weak self] (cars) in
             if let cars = cars {
                 self?.cars = cars
                 DispatchQueue.main.async {
@@ -60,6 +60,14 @@ class BrandsViewController: UIViewController, UITableViewDataSource {
         let cars = cars[indexPath.row]
         cell.textLabel?.text = "\(cars.nome)"
         return cell
+    }
+}
+
+extension BrandsViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let nextViewController = ModelsViewController()
+        nextViewController.brandId = viewModel.getIdBrands(i: indexPath.row)
+        navigationController?.pushViewController(nextViewController, animated: true)
     }
 }
 

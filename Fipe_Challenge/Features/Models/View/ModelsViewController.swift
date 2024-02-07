@@ -8,24 +8,27 @@
 import UIKit
 
 class ModelsViewController: UIViewController {
-    var tableView: UITableView!
-    var brandLabel: UILabel!
+    var viewModel = ModelsViewModel()
+    var tableViewModel: UITableView!
+    var brandId: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
         setupConstraint()
+        viewModel.id = brandId
+
     }
     
     func setupView() {
-        tableView = UITableView()
-        tableView.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(tableView)
-        
-        brandLabel = UILabel()
-        brandLabel.translatesAutoresizingMaskIntoConstraints = false
-        brandLabel.text = "car"
-        view.addSubview(brandLabel)
+        tableViewModel = UITableView()
+        tableViewModel.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(tableViewModel)
+
+//        brandLabel = UILabel()
+//        brandLabel.translatesAutoresizingMaskIntoConstraints = false
+//        brandLabel.text = "car"
+//        view.addSubview(brandLabel)
     }
     
     func setupConstraint() {
@@ -33,4 +36,18 @@ class ModelsViewController: UIViewController {
         
         ])
     }
+    
+//    func loadCarsData() {
+//        viewModel.getCarModel { [weak self] (cars) in
+//            if let cars = cars {
+//                self?.cars = cars
+//                DispatchQueue.main.async {
+//                    self?.tableView.reloadData()
+//                }
+//            } else {
+//                print("deu ruim po")
+//            }
+//        }
+//    }
+
 }
