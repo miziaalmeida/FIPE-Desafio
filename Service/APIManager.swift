@@ -8,27 +8,45 @@
 import Foundation
 
 class APIManager {
-    func getCar(completion: @escaping ([Car]?) -> Void) {
-       let url = URL(string: "https://parallelum.com.br/fipe/api/v1/carros/marcas")!
+    let baseURL = "https://parallelum.com.br/fipe/api/v1/carros"
 
-       var request = URLRequest(url: url)
+    func performRequest<T: Decodable>(endpoint: String, completion: @escaping (T?) -> Void) {
+        guard let url = URL(string: baseURL + endpoint) else {
+            print("URL inválida")
+            completion(nil)
+            return
+        }
 
-       request.setValue(
-           "application/json",
-           forHTTPHeaderField: "Content-Type"
-       )
+        var request = URLRequest(url: url)
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
 
-       let task = URLSession.shared.dataTask(with: request) { data, response, error in
-           if let data = data {
-               if let cars = try? JSONDecoder().decode([Car].self, from: data) {
-                   completion(cars)
-               } else {
-                   print("Invalid Response")
-               }
-           } else if let error = error {
-               print("HTTP Request Failed \(error)")
-           }
-       }
-       task.resume()
-   }
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            if let data = data {
+                do {
+                    let decodedData = try JSONDecoder().decode(T.self, from: data)
+                    completion(decodedData)
+                } catch {
+                    print("Erro na decodificação JSON: \(error)")
+                    completion(nil)
+                }
+            } else if let error = error {
+                print("HTTP Request Failed \(error)")
+                completion(nil)
+            }
+        }
+        task.resume()
+    }
+}
+
+class BrandsAPIManager: APIManager {
+    func getBrands(completion: @escaping ([Car]?) -> Void) {
+        performRequest(endpoint: "/marcas", completion: completion)
+    }
+}
+
+class ModelsAPIManager: APIManager {
+    func getModelsForBrand(brandId: String, completion: @escaping ([CarDetail]?) -> Void) {
+        let endpoint = "/marcas/\(brandId)/modelos"
+        performRequest(endpoint: endpoint, completion: completion)
+    }
 }

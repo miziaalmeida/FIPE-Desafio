@@ -7,26 +7,25 @@
 
 import UIKit
 
-class ModelsViewController: UIViewController {
+class ModelsViewController: UIViewController, UITableViewDataSource {
     
     var viewModel = ModelsViewModel()
     var tableViewModel: UITableView!
     var brandId: String?
+    var models = [CarDetail]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
         setupConstraint()
-        viewModel.id = brandId
         loadModelData()
-
     }
     
     func setupView() {
         tableViewModel = UITableView()
         tableViewModel.translatesAutoresizingMaskIntoConstraints = false
+        tableViewModel.dataSource = self
         view.addSubview(tableViewModel)
-
     }
     
     func setupConstraint() {
@@ -39,8 +38,26 @@ class ModelsViewController: UIViewController {
     }
     
     func loadModelData() {
-        DispatchQueue.main.async {
-        self.tableViewModel.reloadData()
+        viewModel.getModelsForBrand { [weak self] (models) in
+            if let models = models {
+                self?.models = models
+                DispatchQueue.main.async {
+                    self?.tableViewModel.reloadData()
+                }
+            } else {
+                print("deu ruuuim!")
+            }
         }
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return models.count
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        let model = models[indexPath.row]
+        cell.textLabel?.text = model.modelo
+        return cell
     }
 }

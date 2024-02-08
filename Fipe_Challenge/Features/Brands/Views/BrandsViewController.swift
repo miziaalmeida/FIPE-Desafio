@@ -38,17 +38,17 @@ class BrandsViewController: UIViewController, UITableViewDataSource {
     }
     
     func loadCarsData() {
-        viewModel.api.getCar { [weak self] (cars) in
-            if let cars = cars {
-                self?.cars = cars
-                DispatchQueue.main.async {
-                    self?.tableView.reloadData()
-                }
-            } else {
-                print("deu ruim po")
-            }
-        }
-    }
+         viewModel.getBrands { [weak self] (cars) in
+             if let cars = cars {
+                 self?.cars = cars
+                 DispatchQueue.main.async {
+                     self?.tableView.reloadData()
+                 }
+             } else {
+                 print("deu ruim po")
+             }
+         }
+     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return cars.count
