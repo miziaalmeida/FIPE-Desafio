@@ -17,7 +17,6 @@ class ModelsViewModel {
             completion(nil)
             return
         }
-
         api.getModelsForBrand(brandId: brandId, completion: completion)
     }
 }

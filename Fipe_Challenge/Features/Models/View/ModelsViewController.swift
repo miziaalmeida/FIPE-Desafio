@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ModelsViewController: UIViewController, UITableViewDataSource {
+class ModelsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     var viewModel = ModelsViewModel()
     var tableViewModel: UITableView!
@@ -18,6 +18,7 @@ class ModelsViewController: UIViewController, UITableViewDataSource {
         super.viewDidLoad()
         setupView()
         setupConstraint()
+        viewModel.brandId = brandId
         loadModelData()
     }
     
@@ -25,6 +26,7 @@ class ModelsViewController: UIViewController, UITableViewDataSource {
         tableViewModel = UITableView()
         tableViewModel.translatesAutoresizingMaskIntoConstraints = false
         tableViewModel.dataSource = self
+        tableViewModel.delegate = self
         view.addSubview(tableViewModel)
     }
     

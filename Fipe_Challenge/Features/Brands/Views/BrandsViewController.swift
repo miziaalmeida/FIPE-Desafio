@@ -24,6 +24,7 @@ class BrandsViewController: UIViewController, UITableViewDataSource {
         tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.dataSource = self
+        tableView.delegate = self
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         view.addSubview(tableView)
     }
@@ -64,9 +65,10 @@ class BrandsViewController: UIViewController, UITableViewDataSource {
 
 extension BrandsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("marca: \(cars[indexPath.row])")
         let nextViewController = ModelsViewController()
-        let selectBrand = cars[indexPath.row]
-        nextViewController.brandId = selectBrand.codigo
+        let selectedBrand = cars[indexPath.row]
+        nextViewController.brandId = selectedBrand.codigo
         navigationController?.pushViewController(nextViewController, animated: true)
     }
 }
