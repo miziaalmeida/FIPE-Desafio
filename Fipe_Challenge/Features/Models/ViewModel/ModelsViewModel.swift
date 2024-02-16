@@ -8,15 +8,17 @@
 import Foundation
 
 class ModelsViewModel {
-    var api = ModelsAPIManager()
+    var api = APIManager()
     var brandId: String?
-
-    func getModelsForBrand(completion: @escaping ([CarDetail]?) -> Void) {
-        guard let brandId = brandId else {
-            print("ID indefinido")
-            completion(nil)
-            return
+    
+    func getModelsForBrand(completion: @escaping (CarModel) -> Void) {
+        guard let brandId = brandId else { return }
+        let endpoint = "/marcas/\(brandId)/modelos"
+        
+        api.getCarModels(endpoint: endpoint) { model in
+            if let cars = model {
+                completion(cars)
+            }
         }
-        api.getModelsForBrand(brandId: brandId, completion: completion)
     }
 }

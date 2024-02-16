@@ -16,7 +16,6 @@
 		6F6A22242B7270F400FB1B6A /* Car.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F6A22232B7270F400FB1B6A /* Car.swift */; };
 		6F6A22262B72724A00FB1B6A /* CarDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F6A22252B72724A00FB1B6A /* CarDetail.swift */; };
 		6F6A222B2B72923300FB1B6A /* YearViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F6A222A2B72923300FB1B6A /* YearViewController.swift */; };
-		6F6A222F2B7296FE00FB1B6A /* ServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F6A222E2B7296FE00FB1B6A /* ServiceProtocol.swift */; };
 		6F6A22362B741D5D00FB1B6A /* ModelsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F6A22352B741D5D00FB1B6A /* ModelsViewModel.swift */; };
 		6F6A223B2B7431AF00FB1B6A /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F6A223A2B7431AF00FB1B6A /* APIManager.swift */; };
 		6FA929C52B717EF9003082ED /* BrandsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FA929C42B717EF9003082ED /* BrandsViewController.swift */; };
@@ -35,7 +34,6 @@
 		6F6A22232B7270F400FB1B6A /* Car.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Car.swift; sourceTree = "<group>"; };
 		6F6A22252B72724A00FB1B6A /* CarDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarDetail.swift; sourceTree = "<group>"; };
 		6F6A222A2B72923300FB1B6A /* YearViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YearViewController.swift; sourceTree = "<group>"; };
-		6F6A222E2B7296FE00FB1B6A /* ServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceProtocol.swift; sourceTree = "<group>"; };
 		6F6A22352B741D5D00FB1B6A /* ModelsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelsViewModel.swift; sourceTree = "<group>"; };
 		6F6A223A2B7431AF00FB1B6A /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		6FA929C42B717EF9003082ED /* BrandsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrandsViewController.swift; sourceTree = "<group>"; };
@@ -133,14 +131,6 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		6F6A22302B72976100FB1B6A /* Protocol */ = {
-			isa = PBXGroup;
-			children = (
-				6F6A222E2B7296FE00FB1B6A /* ServiceProtocol.swift */,
-			);
-			path = Protocol;
-			sourceTree = "<group>";
-		};
 		6F6A223C2B7431BE00FB1B6A /* Service */ = {
 			isa = PBXGroup;
 			children = (
@@ -190,7 +180,6 @@
 			isa = PBXGroup;
 			children = (
 				6F6A223C2B7431BE00FB1B6A /* Service */,
-				6F6A22302B72976100FB1B6A /* Protocol */,
 				6F6A22222B7270E600FB1B6A /* Models */,
 			);
 			path = Common;
@@ -277,7 +266,6 @@
 				6F68ED402B7154C700B69330 /* AppDelegate.swift in Sources */,
 				6F6A22242B7270F400FB1B6A /* Car.swift in Sources */,
 				6F68ED422B7154C700B69330 /* SceneDelegate.swift in Sources */,
-				6F6A222F2B7296FE00FB1B6A /* ServiceProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
