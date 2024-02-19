@@ -63,4 +63,13 @@ extension ModelsViewController: UITableViewDelegate, UITableViewDataSource {
         cell.backgroundColor = .clear
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let selectedModel = cars?.modelos[indexPath.row] else {return}
+
+        let yearViewController = YearViewController()
+        yearViewController.brandId = brandId
+        yearViewController.modelId = String(selectedModel.codigo)
+        navigationController?.pushViewController(yearViewController, animated: true)
+    }
 }
