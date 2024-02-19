@@ -69,6 +69,14 @@ class APIManager {
                 completion(years)
             }
         }
+    
+    func getCarDetail(brandId: String, modelId: String, yearId: String, completion: @escaping ([CarDetail]?) -> Void) {
+            let endpoint = "/marcas/\(brandId)/modelos/\(modelId)/anos/\(yearId)"
+
+            performRequest(endpoint: endpoint) { (details: [CarDetail]?) in
+                completion(details)
+            }
+        }
 }
 
 class BrandsAPIManager: APIManager {
