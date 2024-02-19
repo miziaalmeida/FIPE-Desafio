@@ -16,10 +16,10 @@ struct CarModel: Codable {
     let modelos: [ModelDetail]
 }
 
-//struct Anos: Codable {
-//    let codigo: String
-//    let nome: String
-//}
+struct Anos: Codable {
+    let codigo: String
+    let nome: String
+}
 
 struct ModelDetail: Codable {
     let codigo: Int

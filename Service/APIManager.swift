@@ -61,6 +61,14 @@ class APIManager {
             }
         }.resume()
     }
+    
+    func getCarYears(brandId: String, modelId: String, completion: @escaping ([Anos]?) -> Void) {
+            let endpoint = "/marcas/\(brandId)/modelos/\(modelId)/anos"
+
+            performRequest(endpoint: endpoint) { (years: [Anos]?) in
+                completion(years)
+            }
+        }
 }
 
 class BrandsAPIManager: APIManager {
