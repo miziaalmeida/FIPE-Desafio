@@ -63,20 +63,36 @@ class APIManager {
     }
     
     func getCarYears(brandId: String, modelId: String, completion: @escaping ([Anos]?) -> Void) {
-            let endpoint = "/marcas/\(brandId)/modelos/\(modelId)/anos"
+        let endpoint = "/marcas/\(brandId)/modelos/\(modelId)/anos"
 
-            performRequest(endpoint: endpoint) { (years: [Anos]?) in
-                completion(years)
-            }
+        performRequest(endpoint: endpoint) { (years: [Anos]?) in
+            completion(years)
         }
+    }
     
-    func getCarDetail(brandId: String, modelId: String, yearId: String, completion: @escaping ([CarDetail]?) -> Void) {
-            let endpoint = "/marcas/\(brandId)/modelos/\(modelId)/anos/\(yearId)"
-
-            performRequest(endpoint: endpoint) { (details: [CarDetail]?) in
-                completion(details)
-            }
+    func getCarDetail(endpoint: String, completion: @escaping (CarDetail?) -> Void) {
+        guard let url = URL(string: baseURL + endpoint) else {
+            print("URL inválida")
+            completion(nil)
+            return
         }
+
+        URLSession.shared.dataTask(with: url) { data, response, error in
+            guard let data = data, error == nil else {
+                print("Error: \(error?.localizedDescription ?? "Unknown error")")
+                completion(nil)
+                return
+            }
+
+            do {
+                let carDetail = try? JSONDecoder().decode(CarDetail.self, from: data)
+                completion(carDetail)
+            } catch {
+                print("Error: \(error.localizedDescription)")
+                completion(nil)
+            }
+        }.resume()
+    }
 }
 
 class BrandsAPIManager: APIManager {

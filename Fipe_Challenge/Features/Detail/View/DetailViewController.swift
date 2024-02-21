@@ -9,7 +9,7 @@ import UIKit
 
 class DetailViewController: UIViewController {
 
-    var details: [CarDetail]?
+    var details: CarDetail?
     var brandId: String?
     var modelId: String?
     var yearId: String?
@@ -52,6 +52,7 @@ class DetailViewController: UIViewController {
         viewModel.brandId = brandId
         viewModel.modelId = modelId
         viewModel.yearId = yearId
+        
         self.viewModel.getDetailForYears { details in
             self.details = details
             DispatchQueue.main.async {
@@ -61,7 +62,7 @@ class DetailViewController: UIViewController {
     }
     
     func setupLabels() {
-        guard let details = details?.first else {
+        guard let details = details.self else {
             return
         }
 
@@ -83,6 +84,15 @@ class DetailViewController: UIViewController {
         NSLayoutConstraint.activate([
             viewCentral.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             viewCentral.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            viewCentral.widthAnchor.constraint(equalToConstant: 350),
+            viewCentral.heightAnchor.constraint(equalToConstant: 400),
+            
+            brandLabel.topAnchor.constraint(equalTo: viewCentral.topAnchor, constant: 25),
+            modelLabel.topAnchor.constraint(equalTo: viewCentral.topAnchor, constant: 25),
+            yearLabel.topAnchor.constraint(equalTo: viewCentral.topAnchor, constant: 25),
+            priceLabel.topAnchor.constraint(equalTo: viewCentral.topAnchor, constant: 25),
+
+            
             
         ])
     }

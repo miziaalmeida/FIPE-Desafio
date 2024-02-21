@@ -13,11 +13,14 @@ class DetailViewModel {
     var modelId: String?
     var yearId: String?
 
-    func getDetailForYears(completion: @escaping ([CarDetail]?) -> Void) {
-        guard let brandId = brandId, let modelId = modelId, let yearId = yearId else { return }
+    func getDetailForYears(completion: @escaping (CarDetail) -> Void) {
+        guard let brandId = brandId, let modelId = modelId, let yearId = yearId else {return}
+        let endpoint = "/marcas/\(brandId)/modelos/\(modelId)/anos/\(yearId)"
 
-        api.getCarDetail(brandId: brandId, modelId: modelId, yearId: yearId) { detail in
-            completion(detail)
+        api.getCarDetail(endpoint: endpoint) { details in
+            if let details = details {
+                completion(details)
+            }
         }
     }
 }

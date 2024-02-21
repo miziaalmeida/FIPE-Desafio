@@ -65,6 +65,7 @@ extension ModelsViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("modelo: \(cars!.modelos[indexPath.row])")
         guard let selectedModel = cars?.modelos[indexPath.row] else {return}
 
         let yearViewController = YearViewController()

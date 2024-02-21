@@ -63,4 +63,15 @@ extension YearViewController: UITableViewDelegate, UITableViewDataSource {
         }
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("ano: \(years?[indexPath.row])")
+        guard let selectedModel = years?[indexPath.row] else {return}
+
+        let detailViewController = DetailViewController()
+        detailViewController.brandId = brandId
+        detailViewController.modelId = modelId
+        detailViewController.yearId = String(selectedModel.codigo)
+        navigationController?.pushViewController(detailViewController, animated: true)
+    }
 }
