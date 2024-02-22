@@ -72,27 +72,41 @@ class APIManager {
     
     func getCarDetail(endpoint: String, completion: @escaping (CarDetail?) -> Void) {
         guard let url = URL(string: baseURL + endpoint) else {
-            print("URL inválida")
+            print("URL inválida: \(baseURL + endpoint)")
             completion(nil)
             return
         }
 
+        print("Chamando API para \(baseURL + endpoint)")
+
         URLSession.shared.dataTask(with: url) { data, response, error in
-            guard let data = data, error == nil else {
-                print("Error: \(error?.localizedDescription ?? "Unknown error")")
+            if let httpResponse = response as? HTTPURLResponse {
+                print("Status Code: \(httpResponse.statusCode)")
+            }
+
+            if let error = error {
+                print("Erro na chamada da API: \(error.localizedDescription)")
+                completion(nil)
+                return
+            }
+
+            guard let data = data else {
+                print("Dados inválidos")
                 completion(nil)
                 return
             }
 
             do {
-                let carDetail = try? JSONDecoder().decode(CarDetail.self, from: data)
+                let carDetail = try JSONDecoder().decode(CarDetail.self, from: data)
+                print("Decodificado com sucesso: \(carDetail)")
                 completion(carDetail)
             } catch {
-                print("Error: \(error.localizedDescription)")
+                print("Erro na decodificação JSON: \(error)")
                 completion(nil)
             }
         }.resume()
     }
+
 }
 
 class BrandsAPIManager: APIManager {

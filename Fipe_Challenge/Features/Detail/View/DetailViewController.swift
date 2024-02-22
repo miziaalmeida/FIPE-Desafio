@@ -1,10 +1,3 @@
-//
-//  DetailViewController.swift
-//  Fipe_Challenge
-//
-//  Created by Jeiel Lima on 19/02/24.
-//
-
 import UIKit
 
 class DetailViewController: UIViewController {
@@ -15,10 +8,18 @@ class DetailViewController: UIViewController {
     var yearId: String?
     var viewModel = DetailViewModel()
     
+    lazy var viewCentral: UIView = {
+        let view = UIView()
+        view.backgroundColor = .systemGray
+        view.layer.cornerRadius = 10
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
     lazy var brandLabel: UILabel = {
-        let brandLabel = UILabel()
-        brandLabel.translatesAutoresizingMaskIntoConstraints = false
-        return brandLabel
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
     }()
     
     lazy var modelLabel: UILabel = {
@@ -39,30 +40,32 @@ class DetailViewController: UIViewController {
         return priceLabel
     }()
     
-    lazy var viewCentral: UIView = {
-        let view = UIView()
-        view.backgroundColor = .systemCyan
-        view.layer.cornerRadius = 10
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-    }()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        view.addSubview(viewCentral)
+        viewCentral.addSubview(brandLabel)
+        viewCentral.addSubview(modelLabel)
+        viewCentral.addSubview(yearLabel)
+        viewCentral.addSubview(priceLabel)
+
+        setupConstraints()
+        
         viewModel.brandId = brandId
         viewModel.modelId = modelId
         viewModel.yearId = yearId
         
-        self.viewModel.getDetailForYears { details in
-            self.details = details
+        viewModel.getDetailForYears { [weak self] details in
+            self?.details = details
             DispatchQueue.main.async {
-                self.setupLabels()
+                self?.updateUI()
             }
         }
     }
     
-    func setupLabels() {
-        guard let details = details.self else {
+    func updateUI() {
+        guard let details = details else {
+            print("Erro: Dados inválidos")
             return
         }
 
@@ -71,30 +74,19 @@ class DetailViewController: UIViewController {
         yearLabel.text = "Ano: \(details.anoModelo)"
         priceLabel.text = "Valor: \(details.valor)"
         
-        view.addSubview(viewCentral)
-        view.addSubview(brandLabel)
-        view.addSubview(modelLabel)
-        view.addSubview(yearLabel)
-        view.addSubview(priceLabel)
-        
-        setupConstraint()
     }
     
-    func setupConstraint() {
+    func setupConstraints() {
         NSLayoutConstraint.activate([
             viewCentral.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             viewCentral.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            viewCentral.widthAnchor.constraint(equalToConstant: 350),
-            viewCentral.heightAnchor.constraint(equalToConstant: 400),
+            viewCentral.widthAnchor.constraint(equalToConstant: 390),
+            viewCentral.heightAnchor.constraint(equalToConstant: 450),
             
-            brandLabel.topAnchor.constraint(equalTo: viewCentral.topAnchor, constant: 25),
-            modelLabel.topAnchor.constraint(equalTo: viewCentral.topAnchor, constant: 25),
-            yearLabel.topAnchor.constraint(equalTo: viewCentral.topAnchor, constant: 25),
-            priceLabel.topAnchor.constraint(equalTo: viewCentral.topAnchor, constant: 25),
-
+            brandLabel.topAnchor.constraint(equalTo: viewCentral.topAnchor, constant: 10),
+            brandLabel.leadingAnchor.constraint(equalTo: viewCentral.leadingAnchor, constant: 10),
             
             
         ])
     }
-
 }
