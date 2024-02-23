@@ -8,10 +8,9 @@
 import Foundation
 
 class APIManager {
-    let baseURL = "https://parallelum.com.br/fipe/api/v1/carros"
-    
+
     func performRequest<T: Codable>(endpoint: String, completion: @escaping (T?) -> Void) {
-        guard let url = URL(string: baseURL + endpoint) else {
+        guard let url = URL(string: Environment.constants + endpoint) else {
             print("URL inválida")
             completion(nil)
             return
@@ -39,7 +38,7 @@ class APIManager {
     }
     
     func getCarModels(endpoint: String, completion: @escaping (CarModel?) -> Void) {
-        guard let url = URL(string: baseURL + endpoint) else {
+        guard let url = URL(string: Environment.constants + endpoint) else {
             print("URL inválida")
             completion(nil)
             return
@@ -71,13 +70,12 @@ class APIManager {
     }
     
     func getCarDetail(endpoint: String, completion: @escaping (CarDetail?) -> Void) {
-        guard let url = URL(string: baseURL + endpoint) else {
-            print("URL inválida: \(baseURL + endpoint)")
+        guard let url = URL(string: Environment.constants + endpoint) else {
+            print("URL inválida: \(Environment.constants + endpoint)")
             completion(nil)
             return
         }
-
-        print("Chamando API para \(baseURL + endpoint)")
+        print("Chamando API para \(Environment.constants + endpoint)")
 
         URLSession.shared.dataTask(with: url) { data, response, error in
             if let httpResponse = response as? HTTPURLResponse {
@@ -106,7 +104,6 @@ class APIManager {
             }
         }.resume()
     }
-
 }
 
 class BrandsAPIManager: APIManager {

@@ -20,6 +20,7 @@
 		6F6A223B2B7431AF00FB1B6A /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F6A223A2B7431AF00FB1B6A /* APIManager.swift */; };
 		6FA929C52B717EF9003082ED /* BrandsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FA929C42B717EF9003082ED /* BrandsViewController.swift */; };
 		6FA929C82B717F95003082ED /* BrandsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FA929C72B717F95003082ED /* BrandsViewModel.swift */; };
+		6FB753322B892ECA00268155 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FB753312B892ECA00268155 /* Environment.swift */; };
 		6FFBA57A2B83A58200C8C8C4 /* YearViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FFBA5792B83A58200C8C8C4 /* YearViewModel.swift */; };
 		6FFBA5802B84037B00C8C8C4 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FFBA57F2B84037B00C8C8C4 /* DetailViewController.swift */; };
 		6FFBA5822B84039200C8C8C4 /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FFBA5812B84039200C8C8C4 /* DetailViewModel.swift */; };
@@ -41,6 +42,7 @@
 		6F6A223A2B7431AF00FB1B6A /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		6FA929C42B717EF9003082ED /* BrandsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrandsViewController.swift; sourceTree = "<group>"; };
 		6FA929C72B717F95003082ED /* BrandsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrandsViewModel.swift; sourceTree = "<group>"; };
+		6FB753312B892ECA00268155 /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
 		6FFBA5792B83A58200C8C8C4 /* YearViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YearViewModel.swift; sourceTree = "<group>"; };
 		6FFBA57F2B84037B00C8C8C4 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		6FFBA5812B84039200C8C8C4 /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
@@ -142,6 +144,7 @@
 			isa = PBXGroup;
 			children = (
 				6F6A223A2B7431AF00FB1B6A /* APIManager.swift */,
+				6FB753312B892ECA00268155 /* Environment.swift */,
 			);
 			name = Service;
 			path = ../../Service;
@@ -300,6 +303,7 @@
 				6FA929C82B717F95003082ED /* BrandsViewModel.swift in Sources */,
 				6FA929C52B717EF9003082ED /* BrandsViewController.swift in Sources */,
 				6F6A222B2B72923300FB1B6A /* YearViewController.swift in Sources */,
+				6FB753322B892ECA00268155 /* Environment.swift in Sources */,
 				6FFBA5802B84037B00C8C8C4 /* DetailViewController.swift in Sources */,
 				6FFBA57A2B83A58200C8C8C4 /* YearViewModel.swift in Sources */,
 				6F6A22262B72724A00FB1B6A /* CarDetail.swift in Sources */,
