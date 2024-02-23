@@ -21,7 +21,7 @@ class DetailViewModel {
         let endpoint = "/marcas/\(brandId)/modelos/\(modelId)/anos/\(yearId)"
 
         api.getCarDetail(endpoint: endpoint) { details in
-            print("Dados da API: \(details)") // Adicione esta linha para debug
+            print("Dados da API: \(details)")
             completion(details)
         }
     }

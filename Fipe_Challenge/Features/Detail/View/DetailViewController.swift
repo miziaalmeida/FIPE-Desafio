@@ -48,13 +48,22 @@ class DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-        view.addSubview(viewCentral)
-        viewCentral.addSubview(brandLabel)
-        viewCentral.addSubview(modelLabel)
-        viewCentral.addSubview(yearLabel)
-        viewCentral.addSubview(priceLabel)
-
-        
+        setupViews()
+    }
+    
+    func updateUI() {
+        guard let details = details else {
+            print("Erro: Dados inválidos")
+            return
+        }
+        brandLabel.text = "Marca: \(details.marca)"
+        modelLabel.text = "Modelo: \(details.modelo)"
+        yearLabel.text = "Ano: \(details.anoModelo)"
+        priceLabel.text = "Valor: \(details.valor)"
+    }
+    
+    func setupViews() {
+        setupViewHierarchy()
         setupConstraints()
         
         viewModel.brandId = brandId
@@ -69,20 +78,15 @@ class DetailViewController: UIViewController {
         }
     }
     
-    func updateUI() {
-        guard let details = details else {
-            print("Erro: Dados inválidos")
-            return
-        }
-
-        brandLabel.text = "Marca: \(details.marca)"
-        modelLabel.text = "Modelo: \(details.modelo)"
-        yearLabel.text = "Ano: \(details.anoModelo)"
-        priceLabel.text = "Valor: \(details.valor)"
-        
+    private func setupViewHierarchy() {
+        view.addSubview(viewCentral)
+        viewCentral.addSubview(brandLabel)
+        viewCentral.addSubview(modelLabel)
+        viewCentral.addSubview(yearLabel)
+        viewCentral.addSubview(priceLabel)
     }
     
-    func setupConstraints() {
+    private func setupConstraints() {
         NSLayoutConstraint.activate([
             viewCentral.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             viewCentral.centerYAnchor.constraint(equalTo: view.centerYAnchor),
