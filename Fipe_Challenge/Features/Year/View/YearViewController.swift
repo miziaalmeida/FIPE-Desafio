@@ -50,7 +50,10 @@ class YearViewController: UIViewController {
 
 extension YearViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return years?.count ?? 0
+        guard let numberOfYears = years?.count else {
+            return 0
+        }
+        return numberOfYears
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
