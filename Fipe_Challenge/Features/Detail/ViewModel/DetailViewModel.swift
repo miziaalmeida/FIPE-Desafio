@@ -18,10 +18,7 @@ class DetailViewModel {
             completion(nil)
             return
         }
-        let endpoint = "/marcas/\(brandId)/modelos/\(modelId)/anos/\(yearId)"
-
-        api.getCarDetail(endpoint: endpoint) { details in
-            print("Dados da API: \(details)")
+        api.getCarDetail(brandId: brandId, modelId: modelId, yearId: yearId) { details in
             completion(details)
         }
     }

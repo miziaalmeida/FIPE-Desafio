@@ -8,9 +8,36 @@
 import Foundation
 
 class APIManager {
+    
+    func getCarDetail(brandId: String, modelId: String, yearId: String, completion: @escaping (CarDetail?) -> Void) {
+        let endpoint = "\(Environment.baseUrl)/\(brandId)/modelos/\(modelId)/anos/\(yearId)"
+        performRequest(endpoint: endpoint, completion: completion)
+    }
+    
+    func getCarYears(brandId: String, modelId: String, completion: @escaping ([Anos]?) -> Void) {
+        let endpoint = "\(Environment.baseUrl)/\(brandId)/modelos/\(modelId)/anos"
 
-    func performRequest<T: Codable>(endpoint: String, completion: @escaping (T?) -> Void) {
-        guard let url = URL(string: Environment.constants + endpoint) else {
+        performRequest(endpoint: endpoint) { (years: [Anos]?) in
+            completion(years)
+        }
+    }
+    
+    func getCarModels(brandId: String?, completion: @escaping (CarModel?) -> Void) {
+        guard let brandId = brandId else { return }
+        let endpoint = "\(Environment.baseUrl)/\(brandId)/modelos"
+        performRequest(endpoint: endpoint, completion: completion)
+    }
+    
+    func getBrands(completion: @escaping ([Car]?) -> Void) {
+        performRequest(completion: completion)
+    }
+
+    func performRequest<T: Codable>(endpoint: String? = Environment.baseUrl, completion: @escaping (T?) -> Void) {
+        guard let endpoint = endpoint else {
+            return
+        }
+        
+        guard let url = URL(string: endpoint) else {
             print("URL inválida")
             completion(nil)
             return
@@ -35,79 +62,5 @@ class APIManager {
             }
         }
         task.resume()
-    }
-    
-    func getCarModels(endpoint: String, completion: @escaping (CarModel?) -> Void) {
-        guard let url = URL(string: Environment.constants + endpoint) else {
-            print("URL inválida")
-            completion(nil)
-            return
-        }
-
-        URLSession.shared.dataTask(with: url) { data, response, error in
-            guard let data = data, error == nil else {
-                print("Error: \(error?.localizedDescription ?? "Unknown error")")
-                completion(nil)
-                return
-            }
-
-            do {
-                let carModel = try? JSONDecoder().decode(CarModel.self, from: data)
-                completion(carModel)
-            } catch {
-                print("Error: \(error.localizedDescription)")
-                completion(nil)
-            }
-        }.resume()
-    }
-    
-    func getCarYears(brandId: String, modelId: String, completion: @escaping ([Anos]?) -> Void) {
-        let endpoint = "/marcas/\(brandId)/modelos/\(modelId)/anos"
-
-        performRequest(endpoint: endpoint) { (years: [Anos]?) in
-            completion(years)
-        }
-    }
-    
-    func getCarDetail(endpoint: String, completion: @escaping (CarDetail?) -> Void) {
-        guard let url = URL(string: Environment.constants + endpoint) else {
-            print("URL inválida: \(Environment.constants + endpoint)")
-            completion(nil)
-            return
-        }
-        print("Chamando API para \(Environment.constants + endpoint)")
-
-        URLSession.shared.dataTask(with: url) { data, response, error in
-            if let httpResponse = response as? HTTPURLResponse {
-                print("Status Code: \(httpResponse.statusCode)")
-            }
-
-            if let error = error {
-                print("Erro na chamada da API: \(error.localizedDescription)")
-                completion(nil)
-                return
-            }
-
-            guard let data = data else {
-                print("Dados inválidos")
-                completion(nil)
-                return
-            }
-
-            do {
-                let carDetail = try JSONDecoder().decode(CarDetail.self, from: data)
-                print("Decodificado com sucesso: \(carDetail)")
-                completion(carDetail)
-            } catch {
-                print("Erro na decodificação JSON: \(error)")
-                completion(nil)
-            }
-        }.resume()
-    }
-}
-
-class BrandsAPIManager: APIManager {
-    func getBrands(completion: @escaping ([Car]?) -> Void) {
-        performRequest(endpoint: "/marcas", completion: completion)
     }
 }

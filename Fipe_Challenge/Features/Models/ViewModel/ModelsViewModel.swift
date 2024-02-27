@@ -13,9 +13,7 @@ class ModelsViewModel {
     
     func getModelsForBrand(completion: @escaping (CarModel) -> Void) {
         guard let brandId = brandId else { return }
-        let endpoint = "/marcas/\(brandId)/modelos"
-        
-        api.getCarModels(endpoint: endpoint) { model in
+        api.getCarModels(brandId: brandId) { model in
             if let cars = model {
                 completion(cars)
             }

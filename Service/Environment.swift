@@ -8,6 +8,6 @@
 import Foundation
 
 enum Environment {
-    static let constants = "https://parallelum.com.br/fipe/api/v1/carros"
+    static let baseUrl = "https://parallelum.com.br/fipe/api/v1/carros/marcas"
 
 }

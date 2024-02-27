@@ -8,7 +8,7 @@
 import Foundation
 
 class BrandsViewModel {
-    var api = BrandsAPIManager()
+    var api = APIManager()
 
     func getBrands(completion: @escaping ([Car]?) -> Void) {
         api.getBrands(completion: completion)
